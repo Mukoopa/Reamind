@@ -1,3 +1,4 @@
+import React, { Component } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { PlatformColor, StyleSheet, Text, View,
   AppRegistry,
@@ -10,19 +11,21 @@ import Note from './components/Note';
 
 export default function App() {
   state = {
-    noteArray: [{'note': 'testnote 1'}],
+    noteArray: [{'date': 'testdate', 'note': 'testnote 1'}],
     noteText: '',
   }
   let notes = this.state.noteArray.map((val, key) => {
     return <Note key={key} keyval={key} val={val} deleteMethod={ ()=>ThisParameterType.deleteNote(key) } />
-  );
+  });
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Reamind</Text>
       </View>
       <StatusBar style="auto" />
-      <ScrollView style={styles.scrollContainer}></ScrollView>
+      <ScrollView style={styles.scrollContainer}>
+        {notes}
+      </ScrollView>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.addButton}>
           <Text style={styles.addButtonText}>+</Text>
